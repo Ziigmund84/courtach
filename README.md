@@ -1,17 +1,27 @@
 # baptistecourtachon.com
 
-Site vitrine de Baptiste Courtachon, joueur pro et enseignant de golf au Golf de Marcilly (Loiret).
+Site de Baptiste Courtachon, joueur pro et enseignant de golf au Golf de Marcilly (Loiret).
 
-Site statique en une seule page (`index.html`), sans dépendance ni étape de build. Publié avec GitHub Pages depuis la branche `main`, dossier racine.
+La nouvelle version garde l'identité d'origine : logo Courtach', bleu nuit `#103045`, jaune `#FEED01`, police Titillium Web, surlignages jaunes et photos de Baptiste.
 
-## Photo
+## Structure
 
-Le site affiche un portrait dans la section « Mon parcours ». Ajoute la photo dans `images/baptiste.jpg` (format portrait, environ 1000 × 1250 px). Tant qu'elle est absente, un visuel de drapeau s'affiche à la place.
+- `index.html` : le site complet, en une page.
+- `img/` : photos, logo et logos partenaires, optimisés en WebP.
+- `fonts/` : police Titillium Web hébergée sur le site (licence OFL), sans appel à Google Fonts.
+
+Le site est statique, sans dépendance ni étape de build. Il est publié avec GitHub Pages depuis la branche `main`, dossier racine.
 
 ## Modifier les contenus
 
-Tout est dans `index.html` : tarifs dans la section `#tarifs`, stages dans `#stages`, partenaires dans `#partenaires`.
+Tout se trouve dans `index.html` :
+
+- les tarifs sont dans la section `#lecons` ;
+- les stages sont dans `#stages` ;
+- les partenaires sont dans `#partenaires` ;
+- les coordonnées sont dans `#contact`.
 
 ## Nom de domaine
 
-Dans Settings → Pages, renseigne `baptistecourtachon.com` comme domaine personnalisé, puis fais pointer le DNS vers GitHub Pages.
+1. Dans Settings → Pages, renseigne `baptistecourtachon.com` comme domaine personnalisé.
+2. Fais pointer le DNS du domaine vers GitHub Pages.
