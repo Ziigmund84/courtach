@@ -1,0 +1,35 @@
+name: Import et compression de la vidéo d'origine
+on:
+  push:
+    paths: ['.github/workflows/import-video.yml']
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Télécharger
+        run: |
+          set -e
+          B=https://baptistecourtachon.com/images
+          mkdir -p /tmp/src assets/video
+          curl -fSL --retry 5 -A "Mozilla/5.0" "$B/revslider/uploads/baptiste4.png" -o assets/img/baptiste4.png
+          curl -fSL --retry 5 -A "Mozilla/5.0" "$B/baptiste1080court.mp4" -o /tmp/src/hero.mp4
+          ls -la /tmp/src assets/img/baptiste4.png
+      - name: Compresser
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
+          ffprobe -v error -show_entries format=duration:stream=width,height,r_frame_rate -of compact /tmp/src/hero.mp4
+          ffmpeg -y -v error -i /tmp/src/hero.mp4 -t 24 -an -vf "scale=1600:-2,fps=25" -c:v libx264 -preset slow -crf 30 -pix_fmt yuv420p -movflags +faststart assets/video/hero.mp4
+          ffmpeg -y -v error -i /tmp/src/hero.mp4 -t 24 -an -vf "scale=720:-2,fps=25" -c:v libx264 -preset slow -crf 31 -pix_fmt yuv420p -movflags +faststart assets/video/hero-mobile.mp4
+          ffmpeg -y -v error -ss 1 -i /tmp/src/hero.mp4 -frames:v 1 -vf "scale=1600:-2" -q:v 4 assets/video/hero-poster.jpg
+          ls -la assets/video
+      - name: Enregistrer et retirer ce workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git rm -q .github/workflows/import-video.yml
+          git add assets
+          git commit -m "Import de la vidéo d'origine, compressée pour le web"
+          git push origin HEAD:main
