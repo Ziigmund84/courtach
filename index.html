@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baptiste Courtachon · Cours de golf à Orléans et Marcilly</title>
+<meta name="description" content="Joueur pro et enseignant au Golf de Marcilly. Cours de golf près d'Orléans (Loiret) pour tous les niveaux, en plein air à Marcilly ou en intérieur au Sweet Spot, avec Trackman.">
+<meta property="og:title" content="Baptiste Courtachon, cours de golf">
+<meta property="og:description" content="Joueur pro et enseignant au Golf de Marcilly, près d'Orléans.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://baptistecourtachon.com/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2313261D'/><path d='M11 26V6l12 5-12 5' fill='%23F2C230'/></svg>">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --mist:#EDF0EA;      /* fond : brume du practice */
+  --paper:#F8FAF6;     /* surfaces claires */
+  --pine:#13261D;      /* encre : pins de Sologne */
+  --moss:#3E5A47;      /* texte secondaire */
+  --line:#C9D2C6;      /* filets */
+  --flag:#F2C230;      /* drapeau de green, unique accent */
+  --sky:#D6E3E2;
+  --measure:38rem;
+  --gutter:clamp(16px,4vw,48px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--mist);color:var(--pine);font-family:"Archivo",system-ui,sans-serif;font-stretch:100%;font-size:1.0625rem;line-height:1.6;}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--flag);outline-offset:3px;border-radius:2px}
+.wrap{max-width:76rem;margin:0 auto;padding:0 var(--gutter)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--pine);color:var(--paper);padding:.5rem .8rem;z-index:50}
+.skip:focus{left:8px}
+
+/* ---------- En-tête ---------- */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--mist) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:border-color .2s}
+.top.scrolled{border-bottom-color:var(--line)}
+.top .wrap{display:flex;align-items:center;gap:1.5rem;height:4rem}
+.mark{font-weight:800;font-stretch:125%;text-decoration:none;font-size:1.05rem;letter-spacing:-.01em;margin-right:auto;white-space:nowrap}
+.nav{display:flex;gap:1.4rem;font-size:.95rem}
+.nav a{text-decoration:none;color:var(--moss)}
+.nav a:hover{color:var(--pine);text-decoration:underline;text-underline-offset:4px}
+.call{display:inline-flex;align-items:center;gap:.5rem;background:var(--pine);color:var(--paper);text-decoration:none;font-weight:600;padding:.55rem .95rem;border-radius:999px;font-size:.95rem;white-space:nowrap}
+.call:hover{background:#000}
+.call svg{width:1em;height:1em}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:8px;padding:.45rem .6rem;font:inherit;color:var(--pine);cursor:pointer}
+@media (max-width:860px){
+  .nav{display:none;position:absolute;top:4rem;left:0;right:0;flex-direction:column;gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:.5rem var(--gutter) 1rem}
+  .nav.open{display:flex}
+  .nav a{padding:.7rem 0;border-bottom:1px solid var(--line);font-size:1.05rem}
+  .menu-btn{display:block}
+  .call span{display:none}
+}
+
+/* ---------- Hero : la trajectoire ---------- */
+.hero{padding:clamp(2rem,5vw,4rem) 0 0;overflow:hidden}
+.hero h1{margin:0;font-weight:850;font-stretch:125%;font-size:clamp(2.9rem,10.5vw,8.6rem);line-height:.88;letter-spacing:-.035em}
+.hero h1 span{display:block}
+.hero .lede{max-width:30rem;font-size:clamp(1.1rem,1.6vw,1.3rem);line-height:1.45;margin:1.6rem 0 1.8rem;color:var(--moss)}
+.ctas{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-flex;align-items:center;gap:.55rem;padding:.85rem 1.25rem;border-radius:999px;font-weight:650;text-decoration:none;font-size:1rem;border:1.5px solid var(--pine)}
+.btn-flag{background:var(--flag);border-color:var(--flag);color:var(--pine)}
+.btn-flag:hover{background:#E5B31C;border-color:#E5B31C}
+.btn-ghost:hover{background:var(--pine);color:var(--paper)}
+
+.flight{position:relative;margin-top:clamp(2rem,5vw,3.5rem)}
+.flight svg{width:100%;height:auto;display:block;overflow:visible}
+.flight .arc{fill:none;stroke:var(--pine);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:6 9}
+.flight .trace{fill:none;stroke:var(--flag);stroke-width:5;stroke-linecap:round}
+.flight .ground{stroke:var(--pine);stroke-width:1.5}
+.flight .dot{fill:var(--paper);stroke:var(--pine);stroke-width:2.5}
+.flight .dot.now{fill:var(--flag)}
+.js .flight .trace{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);animation:fly 2.4s cubic-bezier(.3,.1,.25,1) .4s forwards}
+.js .flight .dot{opacity:0;animation:pop .35s ease-out forwards}
+.js .flight .flagpin{opacity:0;animation:pop .4s ease-out 2.7s forwards}
+@keyframes fly{to{stroke-dashoffset:0}}
+@keyframes pop{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  .js .flight .trace{animation:none;stroke-dashoffset:0}
+  .js .flight .dot,.js .flight .flagpin{animation:none;opacity:1}
+}
+.milestones{list-style:none;margin:0;padding:1.2rem 0 clamp(3rem,6vw,4.5rem);display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;border-top:0}
+.milestones li{font-size:.95rem;line-height:1.4;color:var(--moss);text-align:center;padding:0 .25rem}
+.milestones b{display:block;color:var(--pine);font-weight:750;font-stretch:112%;font-size:1.05rem;margin-bottom:.15rem}
+@media (max-width:760px){
+  .milestones{grid-template-columns:1fr;gap:.9rem;padding-left:1.4rem;border-left:2px dashed var(--pine);margin-left:.4rem;margin-top:1rem}
+  .milestones li{position:relative;text-align:left}
+  .milestones li::before{content:"";position:absolute;left:calc(-1.4rem - 7px);top:.35rem;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--pine)}
+  .milestones li:last-child::before{background:var(--flag)}
+}
+
+/* ---------- Sections ---------- */
+section{scroll-margin-top:4.5rem}
+.band{padding:clamp(3.5rem,8vw,6.5rem) 0}
+.band.paper{background:var(--paper)}
+.band.dark{background:var(--pine);color:var(--mist)}
+h2{font-weight:800;font-stretch:118%;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1;letter-spacing:-.025em;margin:0 0 1.4rem}
+h3{font-weight:750;font-stretch:110%;font-size:1.3rem;line-height:1.2;margin:0 0 .5rem;letter-spacing:-.01em}
+.intro{max-width:var(--measure);color:var(--moss);margin:0 0 2.5rem;font-size:1.1rem}
+.dark .intro{color:#B9C6BB}
+p{margin:0 0 1rem}
+
+/* Parcours */
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(2rem,6vw,5rem);align-items:start}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+.portrait{position:relative;margin:0;aspect-ratio:4/5;background:var(--pine);border-radius:4px;overflow:hidden}
+.portrait .fallback{position:absolute;inset:0;display:grid;place-items:center}
+.portrait .fallback svg{width:42%;height:auto}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.portrait figcaption{position:absolute;left:0;bottom:0;background:var(--flag);color:var(--pine);font-weight:650;font-size:.9rem;padding:.45rem .8rem}
+.prose{max-width:var(--measure)}
+.prose strong{font-weight:700}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem 2rem;margin-top:2.2rem;padding-top:1.6rem;border-top:1px solid var(--line)}
+.facts dt{font-weight:750;font-stretch:112%}
+.facts dd{margin:.15rem 0 0;color:var(--moss);font-size:.97rem}
+@media (max-width:520px){.facts{grid-template-columns:1fr}}
+
+/* Méthode */
+.places{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#2E4A3A;border:1px solid #2E4A3A;margin-bottom:3rem}
+.place{background:var(--pine);padding:1.8rem}
+.place p{color:#B9C6BB;margin:0}
+.place .where{display:block;margin-top:1rem;color:var(--flag);font-size:.95rem}
+@media (max-width:700px){.places{grid-template-columns:1fr}}
+.basics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem}
+.basics svg{width:3rem;height:3rem;margin-bottom:.8rem;stroke:var(--flag);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.basics p{color:#B9C6BB;margin:0}
+@media (max-width:700px){.basics{grid-template-columns:1fr;gap:1.6rem}}
+
+/* Tarifs : la carte de score */
+.card{border:2px solid var(--pine);border-radius:6px;overflow:hidden;background:var(--paper)}
+.card table{width:100%;border-collapse:collapse}
+.card th,.card td{padding:1rem 1.2rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.card thead th{background:var(--pine);color:var(--mist);font-weight:600;font-size:.92rem;border-bottom:0}
+.card tbody tr:last-child td{border-bottom:0}
+.card td.f{font-weight:750;font-stretch:110%;font-size:1.08rem;width:28%}
+.card td.d{white-space:nowrap;color:var(--moss);width:16%}
+.card td.n{color:var(--moss);font-size:.97rem}
+.card td.p{text-align:right;font-weight:800;font-stretch:120%;font-size:1.45rem;white-space:nowrap;border-left:1px solid var(--line);width:14%;font-variant-numeric:tabular-nums}
+.card td.p small{display:block;font-size:.8rem;font-weight:500;color:var(--moss);font-stretch:100%}
+.card th.p{text-align:right}
+.note{margin-top:1rem;color:var(--moss);font-size:.95rem}
+@media (max-width:700px){
+  .card thead{display:none}
+  .card tr{display:grid;grid-template-columns:1fr auto;padding:1rem 1.1rem;border-bottom:1px solid var(--line);gap:.15rem 1rem}
+  .card tbody tr:last-child{border-bottom:0}
+  .card td{padding:0;border:0!important;width:auto!important}
+  .card td.f{grid-column:1}
+  .card td.p{grid-column:2;grid-row:1 / span 2;text-align:right}
+  .card td.d{grid-column:1}
+  .card td.n{grid-column:1 / -1;margin-top:.35rem}
+}
+
+/* Stages */
+.events{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.5rem;border-top:2px solid var(--pine);padding-top:2rem}
+.events .when{display:inline-block;background:var(--sky);padding:.15rem .55rem;border-radius:3px;font-size:.9rem;font-weight:600;margin-bottom:.8rem}
+.events p{color:var(--moss)}
+@media (max-width:860px){.events{grid-template-columns:1fr;gap:2rem}}
+
+/* Partenaires */
+.partners{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(14rem,1fr));border-top:1px solid var(--line)}
+.partners li{border-bottom:1px solid var(--line)}
+.partners a,.partners span{display:block;padding:1rem .2rem;text-decoration:none;font-weight:600;font-stretch:108%}
+.partners a:hover{background:var(--flag)}
+.partners small{display:block;font-weight:400;color:var(--moss);font-size:.88rem;font-stretch:100%}
+
+/* Contact */
+.contact h2{color:var(--paper)}
+.bigphone{display:inline-block;font-weight:850;font-stretch:125%;font-size:clamp(2.2rem,8vw,6rem);line-height:1;letter-spacing:-.03em;color:var(--flag);text-decoration:none;margin:.5rem 0 2rem}
+.bigphone:hover{text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:8px}
+.contact .ctas .btn{border-color:var(--mist);color:var(--mist)}
+.contact .ctas .btn:hover{background:var(--mist);color:var(--pine)}
+.addr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem;margin-top:3rem;padding-top:2rem;border-top:1px solid #2E4A3A;max-width:44rem}
+.addr p{color:#B9C6BB;margin:0}
+.addr a{color:var(--mist)}
+@media (max-width:600px){.addr{grid-template-columns:1fr}}
+
+footer{background:var(--pine);color:#8FA394;font-size:.9rem;padding:0 0 2rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;border-top:1px solid #2E4A3A;padding-top:1.5rem}
+footer a{color:#B9C6BB}
+</style>
+</head>
+<body>
+<a class="skip" href="#parcours">Aller au contenu</a>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="mark" href="#top">B. Courtachon</a>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="#parcours">Parcours</a>
+      <a href="#methode">Méthode</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#stages">Stages</a>
+      <a href="#partenaires">Partenaires</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <a class="call" href="tel:+33669006274" aria-label="Appeler le 06 69 00 62 74">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+      <span>06 69 00 62 74</span>
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="titre">
+    <div class="wrap">
+      <h1 id="titre"><span>Baptiste</span><span>Courtachon</span></h1>
+      <p class="lede">Joueur pro et enseignant au Golf de Marcilly, près d'Orléans. Des cours pour tous les niveaux, sur le parcours ou au simulateur.</p>
+      <div class="ctas">
+        <a class="btn btn-flag" href="tel:+33669006274">Réserver un cours</a>
+        <a class="btn btn-ghost" href="#tarifs">Voir les tarifs</a>
+      </div>
+
+      <div class="flight" aria-hidden="true">
+        <svg viewBox="0 0 1200 230" role="presentation">
+          <line class="ground" x1="0" y1="210" x2="1200" y2="210"/>
+          <path class="arc" d="M120 210 Q 600 -110 1080 210"/>
+          <path class="trace" d="M120 210 Q 600 -110 1080 210"/>
+          <!-- points de la trajectoire, alignés sur les colonnes ci-dessous -->
+          <circle class="dot" cx="120" cy="210" r="9" style="animation-delay:.4s"/>
+          <circle class="dot" cx="360" cy="90" r="9" style="animation-delay:.9s"/>
+          <circle class="dot" cx="600" cy="50" r="9" style="animation-delay:1.4s"/>
+          <circle class="dot" cx="840" cy="90" r="9" style="animation-delay:1.9s"/>
+          <circle class="dot now" cx="1080" cy="210" r="10" style="animation-delay:2.6s"/>
+          <g class="flagpin">
+            <line x1="1110" y1="210" x2="1110" y2="110" stroke="#13261D" stroke-width="3"/>
+            <path d="M1110 110 L1160 126 L1110 142 Z" fill="#F2C230" stroke="#13261D" stroke-width="2"/>
+          </g>
+        </svg>
+      </div>
+      <ol class="milestones">
+        <li><b>9 ans</b>Premières balles au Golf de Marcilly</li>
+        <li><b>19 ans</b>Départ aux États-Unis, golf universitaire NCAA</li>
+        <li><b>Diplômes</b>Bachelor en Business Administration et BPJEPS</li>
+        <li><b>2015 – 2020</b>Cinq saisons sur le circuit professionnel</li>
+        <li><b>Aujourd'hui</b>Enseignant au Golf de Marcilly</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band paper" id="parcours" aria-labelledby="h-parcours">
+    <div class="wrap split">
+      <figure class="portrait">
+        <div class="fallback" aria-hidden="true">
+          <svg viewBox="0 0 100 120"><line x1="30" y1="115" x2="30" y2="10" stroke="#EDF0EA" stroke-width="4"/><path d="M30 10 L80 26 L30 42 Z" fill="#F2C230"/><ellipse cx="30" cy="115" rx="22" ry="4" fill="#3E5A47"/></svg>
+        </div>
+        <img src="images/baptiste.jpg" alt="Baptiste Courtachon au Golf de Marcilly" loading="lazy" onerror="this.remove()">
+        <figcaption>Golf de Marcilly</figcaption>
+      </figure>
+      <div>
+        <h2 id="h-parcours">Mon parcours</h2>
+        <div class="prose">
+          <p>À 9 ans, je tape mes premières balles au Golf de Marcilly. C'est mon club de cœur : j'y suis resté toute ma carrière, amateur puis professionnelle.</p>
+          <p>À 19 ans, je pars aux États-Unis à la <strong>Southeastern Louisiana University</strong> pour jouer au plus haut niveau universitaire (NCAA) tout en préparant, en quatre ans, un Bachelor en Business Administration.</p>
+          <p>De retour en France, diplôme américain en poche et titulaire du <strong>BPJEPS</strong>, le diplôme d'État qui permet d'enseigner le golf, je me lance sur le circuit professionnel pendant cinq ans, de 2015 à 2020.</p>
+          <p>Le haut niveau m'a appris à me servir des nouvelles technologies pour progresser. C'est ce que je vous transmets aujourd'hui : apprendre à vous connaître vite, et travailler dans la bonne direction.</p>
+        </div>
+        <dl class="facts">
+          <div><dt>Southeastern Louisiana University</dt><dd>Golf universitaire NCAA, Bachelor en Business Administration</dd></div>
+          <div><dt>BPJEPS</dt><dd>Diplôme d'État d'enseignement du golf</dd></div>
+          <div><dt>Circuit pro</dt><dd>Joueur professionnel de 2015 à 2020</dd></div>
+          <div><dt>Trackman</dt><dd>Analyse de swing et de vol de balle pendant les cours</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="band dark" id="methode" aria-labelledby="h-methode">
+    <div class="wrap">
+      <h2 id="h-methode">Des cours pour tous les niveaux</h2>
+      <p class="intro">Je suis équipé d'un Trackman : il mesure le mouvement du club et le vol de la balle, et vous montre en direct l'effet de chaque correction.</p>
+      <div class="places">
+        <div class="place">
+          <h3>En plein air</h3>
+          <p>Practice, petit jeu et parcours au Golf de Marcilly, là où vous jouez vraiment.</p>
+          <span class="where">Golf de Marcilly, Marcilly-en-Villette</span>
+        </div>
+        <div class="place">
+          <h3>En intérieur</h3>
+          <p>Au simulateur, avec l'analyse du club et de la balle en dynamique. Idéal l'hiver ou les jours de pluie.</p>
+          <span class="where">Magasin Sweet Spot, Orléans</span>
+        </div>
+      </div>
+      <h3 style="margin-bottom:1.6rem">On commence toujours par les fondamentaux</h3>
+      <div class="basics">
+        <div>
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M20 6v24M28 6v24"/><path d="M14 22c0 10 4 18 10 18s10-8 10-18"/><path d="M14 22h20"/></svg>
+          <h3>Grip</h3>
+          <p>Un bon grip est le point de départ d'un bon swing.</p>
+        </div>
+        <div>
+          <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="22" cy="8" r="4"/><path d="M22 12l4 14-6 16M26 26l4 16M22 16l10 10 6 16"/></svg>
+          <h3>Posture</h3>
+          <p>Le respect des angles et de l'équilibre est primordial.</p>
+        </div>
+        <div>
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 34h40M4 26h40"/><path d="M38 20l6 6-6 6"/><circle cx="12" cy="30" r="2"/></svg>
+          <h3>Alignement</h3>
+          <p>Un bon alignement est la base de la réussite.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="tarifs" aria-labelledby="h-tarifs">
+    <div class="wrap">
+      <h2 id="h-tarifs">Leçons et tarifs</h2>
+      <p class="intro">Les balles de practice restent à votre charge, sauf mention contraire.</p>
+      <div class="card">
+        <table>
+          <thead><tr><th scope="col">Formule</th><th scope="col">Durée</th><th scope="col">Détails</th><th scope="col" class="p">Prix</th></tr></thead>
+          <tbody>
+            <tr><td class="f">Cours individuel</td><td class="d">1 heure</td><td class="n">Pour 1 ou 2 personnes.</td><td class="p">60 €</td></tr>
+            <tr><td class="f">Pack 5 cours</td><td class="d">5 × 1 heure</td><td class="n">Pour 1 ou 2 personnes. Soit 50 € le cours.</td><td class="p">250 €</td></tr>
+            <tr><td class="f">Cours collectif</td><td class="d">1 heure</td><td class="n">À partir de 3 personnes. Idéal pour découvrir le golf entre amis.</td><td class="p">25 €<small>par personne</small></td></tr>
+            <tr><td class="f">Passage carte verte</td><td class="d">1 h 30</td><td class="n">Parcours Pitch &amp; Putt et questionnaire de règles.</td><td class="p">90 €</td></tr>
+            <tr><td class="f">Parcours accompagné</td><td class="d">2 heures</td><td class="n">Green-fee offert à Marcilly. Sur un autre golf, le green-fee reste à votre charge.</td><td class="p">100 €<small>par personne</small></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Pour réserver, appelez ou envoyez un SMS au <a href="tel:+33669006274">06 69 00 62 74</a>.</p>
+    </div>
+  </section>
+
+  <section class="band paper" id="stages" aria-labelledby="h-stages">
+    <div class="wrap">
+      <h2 id="h-stages">Cours collectifs, stages et pro-am</h2>
+      <p class="intro">Les dates de chaque saison sont annoncées sur ma page Facebook. Appelez-moi pour réserver votre place.</p>
+      <div class="events">
+        <article>
+          <span class="when">De septembre à mars</span>
+          <h3>Cours collectifs automne-hiver</h3>
+          <p>20 séances d'une heure, ouvertes aux débutants comme aux joueurs confirmés. Chaque séance a son thème pour passer en revue tous les secteurs de jeu.</p>
+        </article>
+        <article>
+          <span class="when">En hiver</span>
+          <h3>Stage au soleil à Marrakech</h3>
+          <p>Tout inclus : vol, navette, hôtel et cours. Vous posez vos valises, on s'occupe du reste, et vous jouez au golf.</p>
+        </article>
+        <article>
+          <span class="when">Pendant les vacances scolaires</span>
+          <h3>Stage enfants</h3>
+          <p>Ouvert à tous les niveaux, des débutants aux jeunes joueurs confirmés.</p>
+        </article>
+      </div>
+      <p class="note" style="margin-top:2.5rem"><a href="https://www.facebook.com/baptiste.courtachon.pro" rel="noopener" target="_blank">Voir les actualités sur Facebook</a></p>
+    </div>
+  </section>
+
+  <section class="band" id="partenaires" aria-labelledby="h-partenaires">
+    <div class="wrap">
+      <h2 id="h-partenaires">Mes partenaires</h2>
+      <p class="intro">Un grand merci à celles et ceux qui me soutiennent.</p>
+      <ul class="partners">
+        <li><a href="http://www.marcilly.com" rel="noopener" target="_blank">Golf de Marcilly<small>Mon club</small></a></li>
+        <li><a href="https://www.gilbert-autret-architecte.com/" rel="noopener" target="_blank">Gilbert Autret<small>Architecte</small></a></li>
+        <li><a href="https://www.macon-saran-simac-constructions.fr/" rel="noopener" target="_blank">Simac<small>Constructions</small></a></li>
+        <li><a href="https://energieclimatiqueingenierie.site-solocal.com/" rel="noopener" target="_blank">ECR ECI<small>Énergie climatique ingénierie</small></a></li>
+        <li><a href="http://www.delecour-patrimoine.fr/index.html" rel="noopener" target="_blank">Delecour Patrimoine<small>Gestion de patrimoine</small></a></li>
+        <li><span>Richard Ladune</span></li>
+        <li><a href="http://www.solutioncorde.fr/" rel="noopener" target="_blank">Solution Corde<small>Travaux sur cordes</small></a></li>
+        <li><a href="http://www.valcourtage.com/" rel="noopener" target="_blank">Val de France Courtage<small>Courtage</small></a></li>
+        <li><a href="https://www.artcavic.com/" rel="noopener" target="_blank">Art Ca Vic</a></li>
+        <li><a href="https://www.pelle-opticien-krys.com/" rel="noopener" target="_blank">Krys Pellé<small>Opticien</small></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band dark contact" id="contact" aria-labelledby="h-contact">
+    <div class="wrap">
+      <h2 id="h-contact">Réserver un cours</h2>
+      <p class="intro">Appelez-moi ou envoyez un SMS avec vos disponibilités et votre niveau. Je vous réponds rapidement.</p>
+      <a class="bigphone" href="tel:+33669006274">06 69 00 62 74</a>
+      <div class="ctas">
+        <a class="btn" href="sms:+33669006274">Envoyer un SMS</a>
+        <a class="btn" href="https://www.facebook.com/baptiste.courtachon.pro" rel="noopener" target="_blank">Écrire sur Facebook</a>
+      </div>
+      <div class="addr">
+        <div>
+          <h3>Golf de Marcilly</h3>
+          <p>Domaine de la Plaine<br>45240 Marcilly-en-Villette</p>
+        </div>
+        <div>
+          <h3>Sweet Spot</h3>
+          <p>Magasin et simulateur<br>Orléans</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="y">2026</span> Baptiste Courtachon, enseignant de golf</span>
+    <a href="https://www.facebook.com/baptiste.courtachon.pro" rel="noopener" target="_blank">Facebook</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var t=document.querySelector('.flight .trace');
+  if(t){t.style.setProperty('--len',Math.ceil(t.getTotalLength()));}
+  var top=document.getElementById('top');
+  var onS=function(){top.classList.toggle('scrolled',window.scrollY>8)};
+  window.addEventListener('scroll',onS,{passive:true});onS();
+  var b=document.querySelector('.menu-btn'),n=document.getElementById('nav');
+  b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+  n.addEventListener('click',function(e){if(e.target.tagName==='A'){n.classList.remove('open');b.setAttribute('aria-expanded','false')}});
+  document.getElementById('y').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
