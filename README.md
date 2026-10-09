@@ -9,6 +9,10 @@ La nouvelle version garde l'identité d'origine : logo Courtach', bleu nuit `#10
 - `index.html` : le site complet, en une page.
 - `img/` : photos, logo et logos partenaires, optimisés en WebP.
 - `fonts/` : police Titillium Web hébergée sur le site (licence OFL), sans appel à Google Fonts.
+- `js/main.js` : les animations du site.
+- `js/` : GSAP et ScrollTrigger (animations au défilement) et Lenis (défilement fluide), hébergés sur le site.
+
+Les animations sont désactivées automatiquement pour les visiteurs qui ont réglé leur appareil sur « réduire les animations ».
 
 Le site est statique, sans dépendance ni étape de build. Il est publié avec GitHub Pages depuis la branche `main`, dossier racine.
 
